@@ -4,6 +4,8 @@ CLI tool that will iterate through all of the domains you have registered in
 Route 53 and update the Registrant, Administrative and Technical contact
 information.
 
+[![CircleCI](https://circleci.com/gh/cachelab/r53_domain_manager.svg?style=svg)](https://circleci.com/gh/cachelab/r53_domain_manager)
+
 ## Usage
 
 This cli is configured by the following parameters:

@@ -1,0 +1,28 @@
+version: 2
+
+jobs:
+  build:
+    working_directory: /go/src/r53_domain_manager
+    docker:
+      - image: golang:1.13.4
+    steps:
+      - checkout
+      - run:
+          name: Create Directory
+          command: |
+            mkdir -p .coverage
+      - run:
+          name: Build
+          command: |
+            go build -o r53_domain_manager
+      - run:
+          name: Go Test
+          command: |
+            go test -vet=off -v -tags test -coverprofile=/tmp/cov.out ./...
+      - run:
+          name: Go Tool
+          command: |
+            go tool cover -html=/tmp/cov.out -o=.coverage/cov.html
+      - store_artifacts:
+          path: .coverage
+          destination: coverage
