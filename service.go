@@ -11,7 +11,7 @@ import (
 	"github.com/mitchellh/cli"
 )
 
-const version = "1.0.0"
+const version = "1.0.1"
 
 type Service struct{}
 

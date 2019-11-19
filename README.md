@@ -45,3 +45,14 @@ first        First name you want to change.
 last         Last name you want to change.
 phone        Phone number you want to change.
 ```
+
+## Contributing
+
+* `make run` - runs the r53dm cli in a docker container
+* `make build` - builds your r53dm docker container
+* `make vet` - go fmt and vet code
+* `make test` - run unit tests
+
+Before you submit a pull request please update the semantic version inside of
+`service.go` with what you feel is appropriate and then edit the `CHANGELOG.md`
+with your changes and follow a similar structure to what is there.
