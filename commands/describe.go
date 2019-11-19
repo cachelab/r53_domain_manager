@@ -89,7 +89,7 @@ func (c *DescribeCommand) Run(args []string) int {
 	})
 
 	table.Append([]string{
-		"Admin",
+		"Technical",
 		*domain.TechContact.AddressLine1,
 		*domain.TechContact.City,
 		*domain.TechContact.State,

@@ -2,7 +2,6 @@ package commands
 
 import (
 	"flag"
-	"fmt"
 	"strings"
 
 	"github.com/aws/aws-sdk-go/aws"
@@ -34,15 +33,15 @@ Usage: r53dm update [options]
 
 Options:
 
-  --domain=example.com               The domain you wish to update.
-  --addressline1="1234 Jones Drive"  The address line 1 you want to change.
-  --city=Littleton                   The city you want to change.
-  --state=CO                         The state you want to change.
-  --zip=80127                        The zip you want to change.
-  --email=hello@cachelab.co          The email you want to change.
-  --first=Andrew                     The first name you want to change.
-  --last=Puch                        The last name you want to change.
-  --phone=Puch                       The phone number you want to change.
+  --domain=example.com               Domain you wish to update.
+  --addressline1="1234 Jones Drive"  Address line 1 you want to change.
+  --city=Littleton                   City you want to change.
+  --state=CO                         State you want to change.
+  --zip=80127                        Zip you want to change.
+  --email=hello@cachelab.co          Email you want to change.
+  --first=Andrew                     First name you want to change.
+  --last=Puch                        Last name you want to change.
+  --phone=+1.1231231234              Phone number you want to change.
 `
 
 	return strings.TrimSpace(helpText)
@@ -62,7 +61,7 @@ func (c *UpdateCommand) Run(args []string) int {
 	cmdFlags.StringVar(&c.Email, "email", "hello@example.com", "The email you want to change")
 	cmdFlags.StringVar(&c.First, "first", "CacheLab", "The first name you want to change")
 	cmdFlags.StringVar(&c.Last, "last", "CacheLab", "The last name you want to change")
-	cmdFlags.StringVar(&c.Phone, "phone", "+1.4444444444", "The phone number you want to change")
+	cmdFlags.StringVar(&c.Phone, "phone", "+1.1231231234", "The phone number you want to change")
 	cmdFlags.Usage = func() { c.Ui.Output(c.Help()) }
 
 	if err := cmdFlags.Parse(args); err != nil {
@@ -118,7 +117,7 @@ func (c *UpdateCommand) Run(args []string) int {
 		return 1
 	}
 
-	if c.Phone == "+1.4444444444" {
+	if c.Phone == "+1.1231231234" {
 		c.Ui.Output("\nInvalid phone\n")
 		cmdFlags.Usage()
 		return 1
@@ -145,6 +144,8 @@ func (c *UpdateCommand) Run(args []string) int {
 		c.Ui.Output(err.Error())
 		return 1
 	}
+
+	c.Ui.Output("Domain updated")
 
 	return 0
 }
