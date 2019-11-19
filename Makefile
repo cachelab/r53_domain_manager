@@ -1,4 +1,4 @@
-NAME := r53dm
+NAME := r53_domain_manager
 MAINTAINER := cachelab
 VERSION := $(shell grep "const version =" service.go | cut -d\" -f2)
 AWS_REGION := us-east-1
